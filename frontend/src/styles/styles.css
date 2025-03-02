@@ -187,11 +187,6 @@ textarea {
     border-left: 4px solid var(--danger-color);
 }
 
-.card .btn.primary {
-    margin-bottom: 20px;
-    display: inline-flex;
-}
-
 .form-actions {
     display: flex;
     gap: 16px; 
