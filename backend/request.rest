@@ -1,0 +1,24 @@
+### Get all notes
+GET http://localhost:5000/notes
+Accept: application/json
+
+### Create a new note
+POST http://localhost:5000/notes
+Content-Type: application/json
+
+{
+    "title": "coba coba1",
+    "content": "cobacobacobacobacobacobacobacobacoba"
+}
+
+### Update a note
+PATCH http://localhost:5000/notes/16
+Content-Type: application/json
+
+{
+    "title": "coba coba1",
+    "content": "cobacobacobacobacobacobacobacobacoba"
+}
+
+### Delete a note
+DELETE http://localhost:5000/notes/16
