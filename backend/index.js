@@ -7,4 +7,4 @@ app.use(cors());
 app.use(express.json());
 app.use(NoteRoute);
 
-app.listen(5000, () => console.log('Server berjalan di port 5000'));
+app.listen(5000, () => console.log('Server berjalan'));
