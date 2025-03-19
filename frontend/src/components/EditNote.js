@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
+import { BASE_URL } from "../utils";
 
 const EditNote = () => {
     const [title, setTitle] = useState('');
@@ -18,7 +19,7 @@ const EditNote = () => {
     const getNoteById = async () => {
         setFetchLoading(true);
         try {
-        const response = await axios.get(`http://localhost:5000/notes/${id}`);
+        const response = await axios.get(`${BASE_URL}/notes/${id}`);
         setTitle(response.data.title);
         setContent(response.data.content);
         } catch (error) {

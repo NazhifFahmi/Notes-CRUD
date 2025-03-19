@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { BASE_URL } from "../utils";
 
 const NoteList = () => {
     const [notes, setNotes] = useState([]);
@@ -13,7 +14,7 @@ const NoteList = () => {
     const getNotes = async () => {
         setLoading(true);
         try {
-        const response = await axios.get('http://localhost:5000/notes');
+        const response = await axios.get('${BASE_URL}/notes');
         setNotes(response.data);
         } catch (error) {
         console.error('Gagal mengambil data:', error);
@@ -26,7 +27,7 @@ const NoteList = () => {
         const confirmDelete = window.confirm('Apakah Anda yakin ingin menghapus catatan ini?');
         if (confirmDelete) {
         try {
-            await axios.delete(`http://localhost:5000/notes/${id}`);
+            await axios.delete(`${BASE_URL}/notes/${id}`);
             getNotes();
         } catch (error) {
             console.error('Gagal menghapus catatan:', error);
