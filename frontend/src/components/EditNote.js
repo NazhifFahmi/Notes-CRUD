@@ -35,7 +35,7 @@ const EditNote = () => {
         setError('');
 
         try {
-        await axios.patch(`http://localhost:5000/notes/${id}`, { 
+        await axios.patch(`${BASE_URL}/notes/${id}`, { 
             title, 
             content,
             updatedAt: new Date().toISOString()
