@@ -16,7 +16,7 @@ const AddNote = () => {
         setError('');
         
         try {
-        await axios.post('${BASE_URL}/notes', { 
+        await axios.post(`${BASE_URL}/notes`, { 
             title, 
             content,
             createdAt: new Date().toISOString()
