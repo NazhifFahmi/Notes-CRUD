@@ -14,7 +14,7 @@ const NoteList = () => {
     const getNotes = async () => {
         setLoading(true);
         try {
-        const response = await axios.get('${BASE_URL}/notes');
+        const response = await axios.get(`${BASE_URL}/notes`);
         setNotes(response.data);
         } catch (error) {
         console.error('Gagal mengambil data:', error);
