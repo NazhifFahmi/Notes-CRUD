@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { BASE_URL } from "../utils";
 
 const AddNote = () => {
     const [title, setTitle] = useState('');
@@ -15,7 +16,7 @@ const AddNote = () => {
         setError('');
         
         try {
-        await axios.post('http://localhost:5000/notes', { 
+        await axios.post('${BASE_URL}/notes', { 
             title, 
             content,
             createdAt: new Date().toISOString()
