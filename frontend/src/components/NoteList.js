@@ -42,7 +42,7 @@ const NoteList = () => {
 
     return (
         <div className="card">
-        <h1>📌Notes</h1>
+        <h1>Catatan</h1>
         <Link to="add" className="btn primary">
             <span>+</span> Tambah Catatan
         </Link>
