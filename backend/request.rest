@@ -22,3 +22,29 @@ Content-Type: application/json
 
 ### Delete a note
 DELETE http://localhost:5000/notes/16
+
+### REGISTER
+POST http://localhost:5000/notes/register
+Content-Type: application/json
+
+{
+    "email": "nazhif@gmail.com",
+    "username": "nazhif",
+    "password": "passwordku"
+}
+
+###
+
+### LOGIN
+# ↳ menyimpan cookie accessToken secara otomatis jika server mengatur httpOnly
+POST http://localhost:5000/notes/login
+Content-Type: application/json
+
+{
+    "username": "nazhif",
+    "password": "passwordku"
+}
+
+
+### Get all notes
+GET http://localhost:5000/token
