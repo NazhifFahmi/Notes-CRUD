@@ -2,10 +2,11 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import { BASE_URL } from "../utils";
+import "../styles/auth.css";  
 
 function Login() {
   const navigate = useNavigate();
-  const [form, setForm] = useState({ email: "", password: "" });
+  const [form, setForm] = useState({ username: "", password: "" });
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -31,49 +32,19 @@ function Login() {
   };
 
   return (
-    <div
-      style={{
-        minHeight: "100vh",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        background: "#f0f4f8",
-        padding: 20,
-      }}
-    >
-      <div
-        className="card"
-        style={{
-          width: "100%",
-          maxWidth: 500,
-          padding: 40,
-          boxShadow: "0 10px 25px rgba(0, 0, 0, 0.1)",
-          borderRadius: 12,
-          background: "#fff",
-        }}
-      >
-        <h1
-          style={{
-            textAlign: "center",
-            marginBottom: 32,
-            fontSize: 32,
-            fontWeight: "bold",
-            color: "#2c3e50",
-          }}
-        >
-          🔐 Login
-        </h1>
+    <div className="auth-container">
+      <div className="auth-card">
+        <h1>🔐 Login</h1>
 
-        <form onSubmit={handleLogin} noValidate>
+        <form onSubmit={handleLogin} className="auth-form" noValidate>
           <input
-            type="email"
-            name="email"
-            placeholder="📧 Email"
+            type="text"
+            name="username"
+            placeholder="👤 Username"
             required
-            value={form.email}
-            onChange={(e) => setForm({ ...form, email: e.target.value })}
-            className="input-field"
-            style={{ fontSize: 16, padding: "12px 16px", marginBottom: 20 }}
+            value={form.username}
+            onChange={(e) => setForm({ ...form, username: e.target.value })}
+            className="auth-input"
           />
           <input
             type="password"
@@ -82,49 +53,22 @@ function Login() {
             required
             value={form.password}
             onChange={(e) => setForm({ ...form, password: e.target.value })}
-            className="input-field"
-            style={{ fontSize: 16, padding: "12px 16px", marginBottom: 20 }}
+            className="auth-input"
           />
-          <button
-            type="submit"
-            className="btn primary"
-            disabled={loading}
-            style={{ fontSize: 16, padding: "12px 16px", width: "100%" }}
-          >
+          <button type="submit" disabled={loading} className="auth-button">
             {loading ? "Logging in..." : "Login"}
           </button>
         </form>
 
         {message && (
-          <p
-            className={
-              message.includes("berhasil") ? "success-text" : "error-text"
-            }
-            style={{
-              marginTop: 24,
-              fontWeight: 600,
-              fontSize: 16,
-              textAlign: "center",
-            }}
-          >
+          <p className={`auth-message ${message.includes("berhasil") ? "success" : "error"}`}>
             {message}
           </p>
         )}
 
-        <p
-          style={{
-            textAlign: "center",
-            marginTop: 32,
-            fontSize: 15,
-            color: "var(--text-secondary)",
-          }}
-        >
+        <p className="auth-switch-text">
           Belum punya akun?{" "}
-          <Link
-            to="/register"
-            className="btn secondary"
-            style={{ padding: "8px 16px", fontSize: 14 }}
-          >
+          <Link to="/register" className="auth-link">
             Daftar
           </Link>
         </p>

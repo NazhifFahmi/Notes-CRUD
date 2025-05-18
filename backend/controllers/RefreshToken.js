@@ -19,7 +19,7 @@ export const refreshToken = async (req, res) => {
             (err, decoded) => {
             if (err) return res.sendStatus(403);
             console.log("sudah lewat 403 ke dua di controller");
-            const userPlain = user.toJSON(); // Konversi ke object
+            const userPlain = user.toJSON(); 
             const { password: _, refresh_token: __, ...safeUserData } = userPlain;
             const accessToken = jwt.sign(
                 safeUserData,

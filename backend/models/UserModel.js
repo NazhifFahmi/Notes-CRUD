@@ -8,14 +8,13 @@ const User = db.define("user", {
     username: Sequelize.STRING,
     password: Sequelize.STRING,
     refresh_token: {
-        type: DataTypes.TEXT,  // Explicitly use TEXT type for longer data
+        type: DataTypes.TEXT,  
         allowNull: true
     },
 },
     { freezeTableName: true }
 );
 
-// Use alter:true to update existing table structure
 db.sync({ alter: true }).then(() => console.log("Database User table synchronized"));
 
 export default User;

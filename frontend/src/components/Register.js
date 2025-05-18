@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { BASE_URL } from "../utils";
 import { useNavigate, Link } from "react-router-dom";
+import "../styles/auth.css";  
 
 function Register() {
   const [form, setForm] = useState({ email: "", username: "", password: "" });
@@ -33,40 +34,11 @@ function Register() {
   };
 
   return (
-    <div
-      style={{
-        minHeight: "100vh",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: "#f2f2f2",
-        padding: "20px",
-      }}
-    >
-      <div
-        className="card"
-        style={{
-          maxWidth: 460,
-          width: "100%",
-          padding: "40px 32px",
-          boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
-          borderRadius: 12,
-          backgroundColor: "#fff",
-        }}
-      >
-        <h1
-          style={{
-            textAlign: "center",
-            marginBottom: 32,
-            fontSize: 32,
-            fontWeight: "bold",
-            color: "#2c3e50",
-          }}
-        >
-          📝 Register
-        </h1>
+    <div className="auth-container">
+      <div className="auth-card">
+        <h1>📝 Register</h1>
 
-        <form onSubmit={handleRegister} noValidate>
+        <form onSubmit={handleRegister} className="auth-form" noValidate>
           <input
             type="email"
             name="email"
@@ -74,7 +46,7 @@ function Register() {
             required
             value={form.email}
             onChange={handleChange}
-            className="input-field"
+            className="auth-input"
           />
           <input
             type="text"
@@ -83,7 +55,7 @@ function Register() {
             required
             value={form.username}
             onChange={handleChange}
-            className="input-field"
+            className="auth-input"
           />
           <input
             type="password"
@@ -92,41 +64,22 @@ function Register() {
             required
             value={form.password}
             onChange={handleChange}
-            className="input-field"
+            className="auth-input"
           />
-          <button type="submit" className="btn primary" disabled={loading}>
+          <button type="submit" disabled={loading} className="auth-button">
             {loading ? "Registering..." : "Register"}
           </button>
         </form>
 
         {message && (
-          <p
-            className={message.includes("berhasil") ? "success-text" : "error-text"}
-            style={{
-              marginTop: 20,
-              fontWeight: 600,
-              fontSize: 16,
-              textAlign: "center",
-            }}
-          >
+          <p className={`auth-message ${message.includes("berhasil") ? "success" : "error"}`}>
             {message}
           </p>
         )}
 
-        <p
-          style={{
-            textAlign: "center",
-            marginTop: 28,
-            fontSize: 15,
-            color: "var(--text-secondary)",
-          }}
-        >
+        <p className="auth-switch-text">
           Sudah punya akun?{" "}
-          <Link
-            to="/"
-            className="btn secondary"
-            style={{ padding: "8px 16px", fontSize: 14 }}
-          >
+          <Link to="/" className="auth-link">
             Login
           </Link>
         </p>
