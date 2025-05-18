@@ -9,7 +9,7 @@ dotenv.config();
 const app = express();
 
 app.use(cors({
-    origin: process.env.CLIENT_ORIGIN || "https://b-05-450916.uc.r.appspot.com/", 
+    origin: process.env.CLIENT_ORIGIN || "https://b-05-450916.uc.r.appspot.com", 
     credentials: true 
 }));
 app.use(cookieParser());
